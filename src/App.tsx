@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import data from "./Sectorisation.json";
+import { TreeRoot } from "./models/TreeRoot";
+import TreeNode from "./components/TreeNode";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const jsonData: TreeRoot = JSON.parse(JSON.stringify(data));
+
+    return (
+        <div className="App">
+            <h1>Test Idéine</h1>
+            <div className="TreeNodeRow">
+                <div className="TreeNodeName"></div>
+                <div className="TreeNodeCheckbox">
+                  Read
+                </div>
+                <div className="TreeNodeCheckbox">
+                  Write
+                </div>
+            </div>
+            {jsonData.data.roots.map((root) => {
+                return <TreeNode key={root.id} props={root}></TreeNode>;
+            })}
+        </div>
+    );
 }
 
 export default App;

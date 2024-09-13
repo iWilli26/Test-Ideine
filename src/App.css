@@ -7,6 +7,17 @@
   pointer-events: none;
 }
 
+.TreeNodeName {
+  text-align: left;
+margin-left: 0.5rem;
+  width: 40%;
+}
+
+.TreeNodeCheckbox{
+  margin-left: 0.5rem;
+  width: 30%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
