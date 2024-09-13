@@ -8,13 +8,13 @@
 .TreeNodeName {
     text-align: left;
   margin-left: 0.5rem;
-    width: 40%;
+    width: 40vw;
 }
 
 .TreeNodeCheckbox{
-    width: 30%;
+    width: 30vw;
 }
 
 .TreeNodeChildren{
-    margin-left: 2rem;
-}
+  padding-left: 1rem;
+  }

@@ -4,6 +4,8 @@ export type TreeNodeType = {
     external_reference: string;
     name: string;
     model_code: string;
-    parent: string;
+    parent: TreeNodeType;
+    read: boolean;
+    write: boolean;
     children: TreeNodeType[];
 };
