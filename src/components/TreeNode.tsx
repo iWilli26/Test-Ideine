@@ -12,16 +12,10 @@ function TreeNode(props: {
     const [read, setRead] = useState(props.node.read);
     const [write, setWrite] = useState(props.node.write);
 
-    const handleReadChange = () => {
-        const newReadState = !read;
-        setRead(newReadState);
-        props.onUpdateNode(props.node.id, { read: newReadState });
-    };
-    
-
     useEffect(() => {
+        setWrite(props.node.write);
         setRead(props.node.read);
-    }, [props.node.read]);
+    }, [props.node.read, props.node.write]);
 
     return (
         <div className="TreeNode">
@@ -37,11 +31,21 @@ function TreeNode(props: {
                     <input
                         type="checkbox"
                         checked={read}
-                        onChange={handleReadChange}
+                        onChange={(e) => {
+                            props.onUpdateNode(props.node.id, { read: !read });
+                        }}
                     />
                 </div>
                 <div className="TreeNodeCheckbox">
-                    <input type="checkbox" />
+                    <input
+                        type="checkbox"
+                        checked={write}
+                        onChange={(e) => {
+                            props.onUpdateNode(props.node.id, {
+                                write: !write,
+                            });
+                        }}
+                    />
                 </div>
             </div>
             <div className="TreeNodeChildren">

@@ -8,8 +8,8 @@ import { TreeNodeType } from "./models/TreeNodeType";
 function App() {
     const jsonData: TreeRoot = JSON.parse(JSON.stringify(data));
     const init = (node: TreeNodeType) => {
-        node.read = false;
-        node.write = false;
+        node.read = node.read ?? false;
+        node.write = node.write ?? false;
         node.children.forEach((child) => {
             init(child);
         });
@@ -76,8 +76,11 @@ function App() {
         const update = (node: TreeNodeType) => {
             if (node.id === id) {
                 Object.assign(node, updates);
-                setAllChildren(node, "read", updates.read as boolean);
-                setAllChildren(node, "write", updates.write as boolean);
+                if (updates.read !== undefined)
+                    setAllChildren(node, "read", updates.read);
+
+                if (updates.write !== undefined)
+                    setAllChildren(node, "write", updates.write);
                 updateParent(node);
             } else {
                 node.children.forEach(update);
