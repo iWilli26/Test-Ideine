@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./TreeNode.css";
 import { TreeNodeType } from "../models/TreeNodeType";
 
-function TreeNode(props: { node: TreeNodeType, onUpdateNode: (id: string, updates: Partial<TreeNodeType>) => void }) {
+function TreeNode(props: {
+    node: TreeNodeType;
+    onUpdateNode: (id: string, updates: Partial<TreeNodeType>) => void;
+}) {
     const [expanded, setExpanded] = useState(false);
     const hasChildren = props.node.children.length > 0;
 
     const [read, setRead] = useState(props.node.read);
+    const [write, setWrite] = useState(props.node.write);
 
     const handleReadChange = () => {
-      const newReadState = !read;
-      setRead(newReadState);
-      props.onUpdateNode(props.node.id, { read: newReadState });
-  };
+        const newReadState = !read;
+        setRead(newReadState);
+        props.onUpdateNode(props.node.id, { read: newReadState });
+    };
+    
+
+    useEffect(() => {
+        setRead(props.node.read);
+    }, [props.node.read]);
 
     return (
         <div className="TreeNode">
@@ -25,8 +34,11 @@ function TreeNode(props: { node: TreeNodeType, onUpdateNode: (id: string, update
                 </div>
                 <div className="TreeNodeName">{props.node.name}</div>
                 <div className="TreeNodeCheckbox">
-                    <input type="checkbox" checked={read} onChange={handleReadChange} />
-                    
+                    <input
+                        type="checkbox"
+                        checked={read}
+                        onChange={handleReadChange}
+                    />
                 </div>
                 <div className="TreeNodeCheckbox">
                     <input type="checkbox" />
@@ -36,7 +48,11 @@ function TreeNode(props: { node: TreeNodeType, onUpdateNode: (id: string, update
                 {hasChildren &&
                     expanded &&
                     props.node.children.map((child) => (
-                        <TreeNode key={child.id} node={child} onUpdateNode={props.onUpdateNode} />
+                        <TreeNode
+                            key={child.id}
+                            node={child}
+                            onUpdateNode={props.onUpdateNode}
+                        />
                     ))}
             </div>
         </div>
