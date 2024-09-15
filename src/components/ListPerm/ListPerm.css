@@ -1,0 +1,24 @@
+.lists{
+    display: flex;
+    flex-direction: row;
+}
+
+.writeList{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.readList{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.Title{
+    padding-left: 2rem;
+}
+
+h1{
+    padding-left: 2rem;
+}

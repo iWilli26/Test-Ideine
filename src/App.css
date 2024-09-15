@@ -7,15 +7,30 @@
   pointer-events: none;
 }
 
-.TreeNodeName {
-  text-align: left;
-margin-left: 0.5rem;
-  width: 40%;
+.TableRow{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid black;
 }
 
-.TreeNodeCheckbox{
-  margin-left: 0.5rem;
-  width: 30%;
+.TreeNodeCell{
+  display: flex;
+  align-items: center;
+  width: 30vw;
+}
+
+.TreeNodeHeader{
+  display: flex;
+  align-items: center;
+  width: 30vw;
+  justify-content: center;
+}
+
+table{
+  border-collapse: collapse;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 @media (prefers-reduced-motion: no-preference) {

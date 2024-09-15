@@ -1,0 +1,26 @@
+.TreeNodeRow {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding: 1rem 1rem 1rem 0;
+}
+
+.TreeNodeCell{
+    display: flex;
+    align-items: center;
+    width: 30vw;
+}
+
+.TreeNodeCheckbox{
+  display: flex;
+  align-items: center;
+  width: 30vw;
+  justify-content: center;
+}
+
+.TreeNodeChildren .TreeNodeExpand{
+  padding-left: 1rem;
+}
+

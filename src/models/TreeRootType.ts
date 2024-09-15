@@ -1,6 +1,6 @@
 import { TreeNodeType } from "./TreeNodeType";
 
-export type TreeRoot = {
+export type TreeRootType = {
     data: {
         roots: TreeNodeType[];
     };
